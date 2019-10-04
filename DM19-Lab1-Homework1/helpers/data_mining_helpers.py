@@ -1,4 +1,5 @@
 import nltk
+from nltk.tokenize import RegexpTokenizer
 
 """
 Helper functions for data mining lab session 2018 Fall Semester
@@ -30,9 +31,13 @@ def tokenize_text(text, remove_stopwords=False):
     """
     Tokenize text using the nltk library
     """
+    '''
     tokens = []
     for d in nltk.sent_tokenize(text, language='english'):
         for word in nltk.word_tokenize(d, language='english'):
             # filters here
             tokens.append(word)
+    '''
+    tokenizer = RegexpTokenizer(r'\w+')
+    tokens = tokenizer.tokenize(text)
     return tokens
